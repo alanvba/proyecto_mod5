@@ -1,10 +1,13 @@
 from django.db import models
+from .validators import validar_tipo_hoja_ruta
+from .validators import validar_numero_hoja_ruta
+
 class tipo_hoja_ruta(models.Model):
-    descripcion = models.CharField(max_length=500,unique=False)
+    descripcion = models.CharField(max_length=500,unique=False,validators=[validar_tipo_hoja_ruta])
     estado = models.BooleanField(blank=True, default=True)
 
 class hoja_ruta(models.Model):
-    numero = models.IntegerField()
+    numero = models.IntegerField(validators=[validar_numero_hoja_ruta])
     remitente = models.CharField(max_length=500,unique=False)
     referencia = models.CharField(max_length=500,unique=False)
     prioritario = models.BooleanField(blank=True, default=False)
