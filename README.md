@@ -14,3 +14,13 @@ DATABASES = {
 
 ## Nota
 se adjunta el archivo db.sql para insertar datos a la DB
+
+## documentacion de los endpoint generados por swaggs
+puede acceder a la documentacion por siguiente link;
+http://localhost:8000/apidoc/
+
+ademas se incluye las pruebas realizadas a los endpoint en postman
+modulo5.postman_collection.jason 
+
+## seguridad
+todos los endpoint estab con jwt
