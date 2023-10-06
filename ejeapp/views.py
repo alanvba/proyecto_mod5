@@ -1,6 +1,8 @@
 from rest_framework import viewsets
+from rest_framework import generics
+from rest_framework.decorators import api_view
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import tipo_hoja_ruta
 from .models import hoja_ruta
 from .models import usuario
@@ -30,3 +32,21 @@ class HojaRutaViewSet(viewsets.ModelViewSet):
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = usuario.objects.all()
     serializer_class = UsuarioSerializer
+
+class UsuarioCreateView(generics.CreateAPIView, generics.ListAPIView):
+    queryset = usuario.objects.all()
+    serializer_class = UsuarioSerializer
+
+@api_view(["GET"])
+def tipohoja_ruta_count(request):
+    """
+    Cantidad de registros en la tabla tipo de hoja de ruta
+    """
+    try:
+        cantidad = tipo_hoja_ruta.objects.count()
+        return JsonResponse(
+            {"cantidad": cantidad},
+            status=200,
+        )
+    except Exception as e:
+        return JsonResponse({"message": str(e)}, safe=False, status=500)
