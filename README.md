@@ -20,7 +20,7 @@ puede acceder a la documentacion por siguiente link;
 http://localhost:8000/apidoc/
 
 ademas se incluye las pruebas realizadas a los endpoint en postman
-modulo5.postman_collection.jason 
+modulo5.postman_collection.json 
 
 ## seguridad
 todos los endpoint estab con jwt
